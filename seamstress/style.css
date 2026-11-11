@@ -1,0 +1,14 @@
+:root {
+    --black: #000000;
+    --dark-gray: #111111;
+    --white: #ffffff
+}
+
+@font-face {
+    font-family: 'PT Root';
+    src: url(assets/ptroot.woff2)
+}
+
+body {
+    font-family: 'PT Root';
+}
