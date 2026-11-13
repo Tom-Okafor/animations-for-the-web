@@ -7,9 +7,13 @@ slides.forEach(eachSlide => {
     const numberOfSlidesImages = slidesImages.length
     let currentSlideImageIndex = 3
 
-    // Intro animation for slides
-    const intro_tl = gsap.timeline();
-    intro_tl.set(slidesImages, { rotate: () => 100 * Math.random() - 50 }).to(slidesImages, { y: 0, stagger: 0.15, ease: 'back.out(1)' }).to(slidesImages, { rotate: () => 30 * Math.random() - 15 })
+
+    imagesLoaded(slidesImages, function () {
+        // Intro animation for slides
+        const intro_tl = gsap.timeline();
+        intro_tl.set(slidesImages, { rotate: () => 100 * Math.random() - 50 }).to(slidesImages, { y: 0, stagger: 0.15, ease: 'back.out(1)' }).to(slidesImages, { rotate: () => 30 * Math.random() - 15 })
+
+    })
 
 
     eachSlide.addEventListener('click', () => {
@@ -22,6 +26,7 @@ slides.forEach(eachSlide => {
         click_tl.to(slidesImages[currentSlideImageIndex], {
             xPercent: () => comparison_index ? 120 : -120, ease: 'power3.inOut',
             rotate: () => comparison_index ? 15 * Math.random() : -15 * Math.random(),
+            scale: 1.15,
             onComplete: () => {
                 slidesImages[currentSlideImageIndex].classList.add('visible-slide');
                 currentSlideImageIndex = currentSlideImageIndex ? (currentSlideImageIndex - 1) % numberOfSlidesImages : 3
@@ -30,7 +35,7 @@ slides.forEach(eachSlide => {
                 }
             }
         })
-            .to(slidesImages[currentSlideImageIndex], { xPercent: 0, ease: 'power3.out' })
+            .to(slidesImages[currentSlideImageIndex], { xPercent: 0, ease: 'power3.out', scale: 1 })
 
 
     })
