@@ -11,7 +11,7 @@
 
 body {
     font-family: 'PT Root';
-    font-size: 1rem;
+    font-size: 1.3rem;
     line-height: 1.5;
     color: var(--white);
     background-color: var(--black);
@@ -57,6 +57,7 @@ section {
     overflow: hidden;
     margin: 2rem 0 5rem;
     gap: 2rem;
+
 }
 
 
@@ -67,9 +68,14 @@ section div.split {
     overflow: hidden;
 }
 
+section div.split:has(.slides) {
+    background-color: var(--dark-gray);
+    min-height: 100vh;
+}
+
 
 section div.slides {
-    width: min(65vw, 400px);
+    width: min(80vw, 480px);
     aspect-ratio: 2/3;
     position: relative;
 }
@@ -93,7 +99,7 @@ section div.info {
 }
 
 section h2 {
-    font-size: 24px;
+    font-size: 28px;
 }
 
 section p {
@@ -136,7 +142,6 @@ section a {
     section {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        min-height: 100vh;
         overflow: hidden;
         padding-inline: 0;
         margin-block: 0;
@@ -173,7 +178,4 @@ section a {
         margin-top: 32px
     }
 
-    section div.split:has(.slides) {
-        background-color: var(--dark-gray);
-    }
 }
