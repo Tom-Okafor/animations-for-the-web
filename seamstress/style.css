@@ -52,6 +52,8 @@ section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-height: 100vh;
+    overflow: hidden;
+
 }
 
 
@@ -59,7 +61,6 @@ section div.split {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 section div.split:has(.slides) {
@@ -77,6 +78,8 @@ section div.slides img {
     top: 0;
     left: 0;
     z-index: 1;
+    transform: translateY(500%);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
 }
 
 section div.slides img.visible-slide {
