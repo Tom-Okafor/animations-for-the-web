@@ -14,22 +14,23 @@ slides.forEach(eachSlide => {
 
     eachSlide.addEventListener('click', () => {
         const click_tl = gsap.timeline();
-        const current_image = slidesImages[currentSlideImageIndex]
         const comparison_index = Math.round(Math.random())
 
-        click_tl.to(current_image, {
+        // const current_image = slidesImages[currentSlideImageIndex]
+
+
+        click_tl.to(slidesImages[currentSlideImageIndex], {
             xPercent: () => comparison_index ? 120 : -120, ease: 'power3.inOut',
             rotate: () => comparison_index ? 15 * Math.random() : -15 * Math.random(),
             onComplete: () => {
-                current_image.classList.add('visible-slide');
-                currentSlideImageIndex = (currentSlideImageIndex - 1) % numberOfSlidesImages
-                if (currentSlideImageIndex < 0) {
-                    currentSlideImageIndex = 3;
+                slidesImages[currentSlideImageIndex].classList.add('visible-slide');
+                currentSlideImageIndex = currentSlideImageIndex ? (currentSlideImageIndex - 1) % numberOfSlidesImages : 3
+                if (currentSlideImageIndex == 3) {
                     slidesImages.forEach((slide) => slide.classList.remove('visible-slide'))
                 }
             }
         })
-            .to(current_image, { xPercent: 0, ease: 'power3.out' })
+            .to(slidesImages[currentSlideImageIndex], { xPercent: 0, ease: 'power3.out' })
 
 
     })
