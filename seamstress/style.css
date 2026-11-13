@@ -11,7 +11,7 @@
 
 body {
     font-family: 'PT Root';
-    font-size: 1.5rem;
+    font-size: 1rem;
     line-height: 1.5;
     color: var(--white);
     background-color: var(--black);
@@ -31,6 +31,7 @@ header h2 {
     opacity: 0;
     display: flex;
     background-color: var(--black);
+    width: fit-content;
 
     span {
         flex: 0 0 auto;
@@ -42,18 +43,20 @@ header h2 {
 
 header h1 span {
     width: 120px;
+    display: inline-block;
 }
 
 header h2 span {
     width: 240px;
+    ;
 }
 
 section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
-
+    margin: 2rem 0 5rem;
+    gap: 2rem;
 }
 
 
@@ -63,12 +66,9 @@ section div.split {
     align-items: center;
 }
 
-section div.split:has(.slides) {
-    background-color: var(--dark-gray);
-}
 
 section div.slides {
-    height: 80vh;
+    width: min(65vw, 400px);
     aspect-ratio: 2/3;
     position: relative;
 }
@@ -88,12 +88,91 @@ section div.slides img.visible-slide {
 
 section div.info {
     max-width: 480px;
+    padding-inline: 1.5rem;
 }
 
 section h2 {
-    font-size: 32px;
+    font-size: 24px;
 }
 
 section p {
-    margin: 32px 0 0 0
+    margin: 8px 0 0px 0;
+}
+
+section:nth-child(3) {
+    flex-direction: column-reverse;
+}
+
+section a {
+    text-decoration: none;
+    color: var(--black);
+    font-size: 1rem;
+    background-color: var(--white);
+    padding: 8px 24px;
+    border-radius: 50px;
+    margin-top: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-variation-settings: 'wght' 500;
+
+    img {
+        width: 12px;
+        height: 16px;
+        object-fit: cover;
+        object-position: right center;
+        transition: width 0.25s;
+    }
+
+    &:hover img {
+        width: 25px;
+        height: 16px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 100vh;
+        overflow: hidden;
+        padding-inline: 0;
+        margin-block: 0;
+        gap: 0;
+    }
+
+    section div.slides {
+        height: 80vh;
+        aspect-ratio: 2/3;
+        position: relative;
+    }
+
+    section div.slides {
+        height: 80vh;
+        width: auto;
+        aspect-ratio: 2/3;
+        position: relative;
+    }
+
+    body {
+        font-size: 1.5rem;
+    }
+
+    section div.info {
+        padding-inline: 0;
+    }
+
+
+    section h2 {
+        font-size: 32px;
+    }
+
+    section p {
+        margin-top: 32px
+    }
+
+    section div.split:has(.slides) {
+        background-color: var(--dark-gray);
+    }
 }
